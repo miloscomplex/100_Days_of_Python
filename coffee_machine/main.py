@@ -50,7 +50,7 @@ def process_coins():
     return total
 
 
-def is_transactions_sucessful(money_received, drnk_cost):
+def is_transactions_sucessful(money_received, drink_cost):
     """Return True when the payment is accepted, or False if money is insufficient."""
     if money_received >= drink_cost:
         change = round(money_received - drink_cost, 2)
@@ -63,6 +63,11 @@ def is_transactions_sucessful(money_received, drnk_cost):
         return False
 
 
+def make_coffee(drink_name, order_ingredients):
+    """Deduct the required ingredients from the resources."""
+    for item in order_ingredients:
+        resources[item] -= order_ingredients[item]
+    print(f"Here is your {drink_name} ☕️")
 
 profit = 0
 
@@ -81,4 +86,5 @@ while is_on:
         drink = MENU[choice]
         if is_resource_sufficient(drink["ingredients"]):
             payment = process_coins()
-            is_transactions_sucessful(payment, drink["cost"])
+            if is_transactions_sucessful(payment, drink["cost"]):
+                make_coffee(choice, drink["ingredients"])
