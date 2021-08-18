@@ -1,10 +1,11 @@
 from turtle import Screen
 import turtle as t
-import random 
+import random
 
 tim = t.Turtle()
 tim.shape("turtle")
 tim.color("coral")
+tim.pensize(10)
 
 colors = ["cornflower blue","forest green","dark salmon","medium purple","yellow","wheat"]
 
