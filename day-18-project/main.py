@@ -10,35 +10,31 @@ t.colormode(255)
 # tim.goto(200, 1000)
 
 tim.shape("turtle")
-tim.pensize(1)
 tim.penup()
+tim.hideturtle()
 tim.speed("fastest")
-
+tim.setheading(225)
+tim.forward(600)
+tim.setheading(0)
 
 def random_color():
     random_int = random.randint(0, len(color_list) - 1)
     return color_list[random_int]
 
-directions = [0, 90, 180, 270]
-
 def draw_line_of_circles():
     for n in range(0, 110, 10):
-        tim.color(random_color())
-        print(n)
-        print(tim.pos())
-        tim.begin_fill()
-        tim.circle(10)
-        tim.end_fill()
+        tim.dot(20, random_color())
         tim.forward(50)
-        # heading += 5
 
 
-x = 0
-y = 0
-while y < 400:
+x = round(tim.xcor())
+y = round(tim.ycor())
+
+for _ in range(10):
     tim.setpos(x,y)
     draw_line_of_circles()
     y += 40
+    
 
 screen = Screen()
 screen.exitonclick()
