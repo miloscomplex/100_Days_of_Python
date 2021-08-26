@@ -28,16 +28,18 @@ def counter_clockwise():
     tim.left(speed)
 
 def clear_drawing():
-    tim.home()
     tim.clear()
+    tim.pendup()
+    tim.home()
+    tim.pendown()
 
 
 
 screen.listen()
-screen.onkey(key="w", fun=move_forwards)
-screen.onkey(key="s", fun=move_backwards)
-screen.onkey(key="d", fun=clockwise)
-screen.onkey(key="a", fun=counter_clockwise)
-screen.onkey(key="c", fun=clear_drawing)
+screen.onkey(move_forwards, "w")
+screen.onkey(move_backwards, "s")
+screen.onkey(clockwise, "d")
+screen.onkey(counter_clockwise, "a")
+screen.onkey(clear_drawing, "c")
 
 screen.exitonclick()
