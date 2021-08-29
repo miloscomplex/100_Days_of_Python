@@ -1,39 +1,20 @@
 from turtle import Screen, Turtle
-from snake_body import SnakeBody
+from snake import Snake
+import time
 
 
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
 screen.title("My Snake Game")
-tim = Turtle()
+screen.tracer(0)
 
-def make_snake_body(num):
-    count = 0
-    while count < num:
-        tim.pendown()
-        new_body = SnakeBody()
-        tim.color(new_body.color)
-        tim.begin_fill()
-        tim.backward(new_body.width)
-        tim.right(90)
-        tim.forward(new_body.width)
-        tim.left(90)
-        tim.forward(new_body.height)
-        tim.left(90)
-        tim.forward(new_body.width)
-        tim.end_fill()
-        tim.penup()
-        tim.right(90)
-        tim.backward(new_body.width)
-        count += 1
+snake = Snake()
 
-
-
-
-
-
-make_snake_body(4)
-
+game_is_on = True
+while game_is_on:
+    screen.update()
+    time.sleep(0.1)
+    snake.move()
 
 screen.exitonclick()
