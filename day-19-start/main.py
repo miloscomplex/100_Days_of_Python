@@ -1,9 +1,8 @@
 from turtle import Turtle, Screen
 
-
 tim = Turtle()
 screen = Screen()
-screen.setup(width=500, height=500)
+screen.setup(width=1000, height=1000)
 
 def move_forwards():
     tim.forward(10)
