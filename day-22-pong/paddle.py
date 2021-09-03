@@ -1,18 +1,23 @@
 from turtle import Turtle
 SPEED = 20
 
-class Paddle:
+class Paddle(Turtle):
     """docstring for paddle."""
 
-    def __init__(self):
-        self.create_paddle()
+    def __init__(self, tupple):
+        super().__init__()
+        self.shape("square")
+        self.color("white")
+        self.shapesize(stretch_wid=5, stretch_len=1)
+        self.penup()
+        self.goto(tupple)
 
-    def create_paddle(self):
-        new_paddle = Turtle("square")
-        new_paddle.color("white")
-        new_paddle.shapesize(20,100)
-        new_paddle.penup()
-        new_paddle.goto(350, 0)
 
-    def up(self):
-        pass
+    def go_up(self):
+        new_y = self.ycor() + 20
+        self.goto(self.xcor(), new_y)
+
+
+    def go_down(self):
+        new_y = self.ycor() - 20
+        self.goto(self.xcor(), new_y)
