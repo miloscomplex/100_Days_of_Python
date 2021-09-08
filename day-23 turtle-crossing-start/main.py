@@ -5,12 +5,11 @@ from car_manager import CarManager
 from scoreboard import Scoreboard
 
 SPEED = 10;
+CAR_NUM = 20;
+cars = []
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
-car = CarManager()
-
-
 
 def go_up():
     turtle.forward(SPEED)
@@ -24,12 +23,17 @@ turtle.goto(0,-280)
 screen.listen()
 screen.onkey(go_up, "Up")
 
+for i in range(CAR_NUM):
+    car = CarManager()
+    cars.append(car)
+
 score = Scoreboard()
 
 game_is_on = True
 
 while game_is_on:
     time.sleep(0.1)
-    car.move_forward()
+    for car in cars:
+        car.move_forward()
 
     screen.update()
