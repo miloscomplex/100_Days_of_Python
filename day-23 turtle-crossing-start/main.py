@@ -24,9 +24,12 @@ turtle.goto(0,-280)
 screen.listen()
 screen.onkey(go_up, "Up")
 
+score = Scoreboard()
+
 game_is_on = True
 
 while game_is_on:
     time.sleep(0.1)
     car.move_forward()
+
     screen.update()

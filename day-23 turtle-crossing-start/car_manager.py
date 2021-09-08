@@ -22,4 +22,5 @@ class CarManager(Turtle):
     def move_forward(self):
         self.goto(self.xcor() - 10, self.ycor())
         if self.xcor() < -350:
-            self.goto(300, random.randint(-270, 270))
+            self.goto(300, random.randint(-280, 280))
+            self.color(COLORS[random.randint(0, len(COLORS) - 1)])
