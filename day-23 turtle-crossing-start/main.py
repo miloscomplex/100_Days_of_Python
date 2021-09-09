@@ -6,17 +6,19 @@ from scoreboard import Scoreboard
 
 CAR_NUM = 10;
 cars = []
+
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
-
+screen.bgcolor("LightGray")
+screen.listen()
 
 for i in range(CAR_NUM):
     car = CarManager()
     cars.append(car)
 
 player = Player()
-screen.listen()
+
 screen.onkey(player.go_up, "Up")
 
 score = Scoreboard()
