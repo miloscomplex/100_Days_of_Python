@@ -23,11 +23,18 @@ screen.onkey(player.go_up, "Up")
 
 score = Scoreboard()
 
+def check_collision():
+    for car in cars:
+        if car.xcor() == player.xcor() and car.ycor() == player.ycor():
+            print('hey it collided')
+
 game_is_on = True
 
 while game_is_on:
     time.sleep(0.1)
     for car in cars:
         car.move_forward()
+
+    check_collision()
 
     screen.update()

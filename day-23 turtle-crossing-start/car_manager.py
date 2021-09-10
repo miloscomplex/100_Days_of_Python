@@ -4,8 +4,8 @@ from turtle import Turtle
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
-TOP_MAX = 270
-BOTTOM_MAX = -270
+TOP_MAX = 250
+BOTTOM_MAX = -250
 
 
 class CarManager(Turtle):
@@ -18,7 +18,7 @@ class CarManager(Turtle):
         self.color(COLORS[random.randint(0, len(COLORS) - 1)])
         self.shapesize(stretch_wid=1, stretch_len=3)
         self.penup()
-        self.goto(random.randint(-290, 290), random.randint(BOTTOM_MAX, TOP_MAX))
+        self.goto(random.randint(300, 690), random.randint(BOTTOM_MAX, TOP_MAX))
 
 
     def move_forward(self):
