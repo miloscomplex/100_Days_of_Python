@@ -11,18 +11,22 @@ BOTTOM_MAX = -250
 class CarManager(Turtle):
     def __init__(self):
         super().__init__()
-        self.create_car()
+        self.all_cars = []
+        self.hideturtle()
 
     def create_car(self):
-        self.shape("square")
-        self.color(COLORS[random.randint(0, len(COLORS) - 1)])
-        self.shapesize(stretch_wid=1, stretch_len=3)
-        self.penup()
-        self.goto(random.randint(300, 690), random.randint(BOTTOM_MAX, TOP_MAX))
+        random_chance = random.randint(1, 6)
+        if random_chance == 1:
+            new_car = Turtle("square")
+            new_car.color(random.choice(COLORS))
+            new_car.shapesize(stretch_wid=1, stretch_len=2)
+            new_car.penup()
+            random_y = random.randint(BOTTOM_MAX, TOP_MAX)
+            random_x = random.randint(300, 690)
+            new_car.goto(random_x, random_y)
+            self.all_cars.append(new_car)
 
 
-    def move_forward(self):
-        self.goto(self.xcor() - MOVE_INCREMENT, self.ycor())
-        if self.xcor() < -350:
-            self.goto(300, random.randint(BOTTOM_MAX, TOP_MAX))
-            self.color(COLORS[random.randint(0, len(COLORS) - 1)])
+    def move_cars(self):
+        for car in self.all_cars:
+            car.backward(STARTING_MOVE_DISTANCE)

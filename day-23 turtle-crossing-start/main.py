@@ -13,28 +13,31 @@ screen.tracer(0)
 screen.bgcolor("LightGray")
 screen.listen()
 
-for i in range(CAR_NUM):
-    car = CarManager()
-    cars.append(car)
-
 player = Player()
+car_manager = CarManager()
 
 screen.onkey(player.go_up, "Up")
 
 score = Scoreboard()
 
-def check_collision():
-    for car in cars:
-        if car.xcor() == player.xcor() and car.ycor() == player.ycor():
-            print('hey it collided')
-
 game_is_on = True
 
 while game_is_on:
     time.sleep(0.1)
-    for car in cars:
-        car.move_forward()
-
-    check_collision()
-
     screen.update()
+
+    car_manager.create_car()
+    car_manager.move_cars()
+
+    # detect collision with car
+    for car in car_manager.all_cars:
+        if car.distance(player) < 20:
+            game_is_on = False
+
+    # detect if player made it across
+    if player.is_at_finish_line():
+        player.goto_start()
+        score.level += 1
+        score.update_scoreboard()
+
+screen.exitonclick()
