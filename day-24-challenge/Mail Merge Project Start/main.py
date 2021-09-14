@@ -12,7 +12,7 @@ with open("./Input/Names/invited_names.txt") as data:
     names = data.readlines()
 
 
-print(names)
+# print(names)
 
 for name in names:
     with open("./Input/Letters/starting_letter.txt") as letter:
