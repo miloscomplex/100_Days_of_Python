@@ -24,7 +24,7 @@ while len(guessed_states) < 50:
 
         df = pandas.DataFrame(missed_states)
         df.to_csv("states_to_learn.csv")
-        
+
         break
 
     if answer_state in all_states:
